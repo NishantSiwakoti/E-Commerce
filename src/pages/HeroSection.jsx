@@ -6,8 +6,12 @@ import ProductCard from "../components/ProductCard";
 import { products } from "../assets/Products";
 import { NavLink } from "react-router-dom";
 
+// Import images at the top
+import img1 from "../assets/1.png";
+import img2 from "../assets/2.png";
+import img3 from "../assets/3.png";
+
 const HeroSection = () => {
-  // Settings for the main hero carousel
   const settings = {
     dots: true,
     infinite: true,
@@ -18,7 +22,6 @@ const HeroSection = () => {
     autoplaySpeed: 2000,
   };
 
-  // Settings for the product carousel
   const productCarouselSettings = {
     dots: false,
     infinite: true,
@@ -49,7 +52,6 @@ const HeroSection = () => {
     ],
   };
 
-  // Categories for the category bar
   const categories = [
     "Electronics",
     "Fashion",
@@ -62,19 +64,15 @@ const HeroSection = () => {
     "Appliances",
   ];
 
-  // Image paths for the hero carousel
-  const images = ["src/assets/1.png", "src/assets/2.png", "src/assets/3.png"];
+  const images = [img1, img2, img3];
 
-  // Filter top deals from the products list
   const topDeals = products.filter((product) => product.cutPrice);
 
-  // Function to get random products
   const getRandomProducts = (arr, count) => {
     const shuffled = arr.sort(() => 0.5 - Math.random());
     return shuffled.slice(0, count);
   };
 
-  // Get 10 random products
   const randomProducts = getRandomProducts(products, 10);
 
   return (
