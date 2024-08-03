@@ -7,6 +7,7 @@ import { products } from "../assets/Products";
 import { NavLink } from "react-router-dom";
 
 const HeroSection = () => {
+  // Settings for the main hero carousel
   const settings = {
     dots: true,
     infinite: true,
@@ -17,6 +18,7 @@ const HeroSection = () => {
     autoplaySpeed: 2000,
   };
 
+  // Settings for the product carousel
   const productCarouselSettings = {
     dots: false,
     infinite: true,
@@ -47,6 +49,7 @@ const HeroSection = () => {
     ],
   };
 
+  // Categories for the category bar
   const categories = [
     "Electronics",
     "Fashion",
@@ -59,8 +62,10 @@ const HeroSection = () => {
     "Appliances",
   ];
 
+  // Image paths for the hero carousel
   const images = ["src/assets/1.png", "src/assets/2.png", "src/assets/3.png"];
 
+  // Filter top deals from the products list
   const topDeals = products.filter((product) => product.cutPrice);
 
   // Function to get random products
@@ -75,6 +80,7 @@ const HeroSection = () => {
   return (
     <section className="bg-gray-100 overflow-x-hidden">
       <div className="container mx-auto px-4 text-center">
+        {/* Category Bar */}
         <div className="mb-4 m-3 overflow-x-auto md:justify-center bg-white whitespace-nowrap py-8 rounded-md flex">
           {categories.map((category, index) => (
             <span
@@ -86,6 +92,7 @@ const HeroSection = () => {
           ))}
         </div>
 
+        {/* Hero Carousel */}
         <div className="carousel mx-auto w-full px-2 mb-8">
           <Slider {...settings}>
             {images.map((img, index) => (
@@ -103,6 +110,7 @@ const HeroSection = () => {
           </Slider>
         </div>
 
+        {/* Top Deals Section */}
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-2xl font-bold m-5 lg:ml-16">Top Deals</h2>
           <NavLink to="/topdeals">
@@ -112,25 +120,31 @@ const HeroSection = () => {
           </NavLink>
         </div>
 
+        {/* Top Deals Carousel */}
         <div className="top-deals-carousel mx-auto w-full px-2 mb-8">
           <Slider {...productCarouselSettings}>
             {topDeals.map((product) => (
-              <div key={product.id} className="p-2">
-                <ProductCard
-                  title={product.title}
-                  image={product.images[0]}
-                  category={product.category}
-                  price={product.price}
-                  cutPrice={product.cutPrice}
-                  description={product.description}
-                  rating={product.rate}
-                  brand={product.brand}
-                />
-              </div>
+              <NavLink key={product.id} to={`/product/${product.id}`}>
+                <div className="p-4 bg-white rounded-lg shadow-md m-2">
+                  <ProductCard
+                    key={product.id}
+                    id={product.id}
+                    title={product.title}
+                    image={product.images[0]}
+                    category={product.category}
+                    price={product.price}
+                    cutPrice={product.cutPrice}
+                    description={product.description}
+                    rating={product.rate}
+                    brand={product.brand}
+                  />
+                </div>
+              </NavLink>
             ))}
           </Slider>
         </div>
 
+        {/* For You Section */}
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-2xl font-bold m-5 lg:ml-16">For You</h2>
           <NavLink to="/foryou">
@@ -140,10 +154,13 @@ const HeroSection = () => {
           </NavLink>
         </div>
 
+        {/* For You Grid */}
         <div className="for-you-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 mx-auto w-full px-2 mb-8">
           {randomProducts.map((product) => (
-            <div key={product.id} className="p-2">
+            <div className="p-4 bg-white rounded-lg shadow-md">
               <ProductCard
+                key={product.id}
+                id={product.id}
                 title={product.title}
                 image={product.images[0]}
                 category={product.category}

@@ -1,4 +1,5 @@
-import React from "react";
+// src/pages/ProductDetail.js
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { products } from "../assets/Products";
 import { Carousel } from "react-responsive-carousel";
@@ -8,6 +9,10 @@ import ProductCard from "../components/ProductCard";
 const ProductDetail = () => {
   const { id } = useParams();
   const product = products.find((prod) => prod.id === id);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
 
   if (!product) {
     return <div className="container mx-auto px-4 py-8">Product not found</div>;
@@ -40,10 +45,10 @@ const ProductDetail = () => {
             </Carousel>
           </div>
           <div className="w-full md:w-1/2 lg:w-3/5 mt-4 md:mt-0 md:pl-6">
-            <h1 className="text-4xl font-bold text-orange-400 mb-4">
+            <h1 className="text-2xl md:text-4xl font-bold text-orange-400 mb-4">
               {product.title}
             </h1>
-            <p className="text-gray-700 text-lg mb-4 description-clamp">
+            <p className="text-gray-700 text-md md:text-lg mb-4 description-clamp">
               {product.description}
             </p>
             <div className="flex items-center mb-4">
@@ -92,23 +97,25 @@ const ProductDetail = () => {
         {/* Similar Products Section */}
         {similarProducts.length > 0 && (
           <div className="mt-12">
-            <h2 className="text-3xl font-bold text-gray-800 mb-6">
+            <h2 className="text-xl md:text-3xl font-bold text-gray-800 mb-6">
               Similar Products
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {similarProducts.map((prod) => (
-                <ProductCard
-                  key={prod.id}
-                  id={prod.id}
-                  title={prod.title}
-                  image={prod.images[0]}
-                  category={prod.category}
-                  price={prod.price}
-                  cutPrice={prod.cutprice}
-                  description={prod.description}
-                  rating={prod.rate}
-                  brand={prod.brand}
-                />
+                <div className="p-4 bg-white rounded-lg shadow-md">
+                  <ProductCard
+                    key={prod.id}
+                    id={prod.id}
+                    title={prod.title}
+                    image={prod.images[0]}
+                    category={prod.category}
+                    price={prod.price}
+                    cutPrice={prod.cutprice}
+                    description={prod.description}
+                    rating={prod.rate}
+                    brand={prod.brand}
+                  />
+                </div>
               ))}
             </div>
           </div>
