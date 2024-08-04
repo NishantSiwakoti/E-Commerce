@@ -1,8 +1,12 @@
 import React from "react";
 import { products } from "../assets/Products";
 import ProductCard from "../components/ProductCard";
+import { useEffect } from "react";
 
 const ForYouPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <section className="bg-gray-100 py-8">
       <div className="container mx-auto px-4">

@@ -66,9 +66,9 @@ export const products = [
     description:
       "Experience instant response times thanks to the Qualcomm Octa-Core processor. Compatible with T-Mobile and AT&T LTE networks (this device will be compatible with the new AT&T network next year). It is currently not certified for use on Verizon and does not support any CDMA networks (such as Verizon, Sprint, Spectrum, Xfinity, etc.). Captivating Cinematic Visual Experience: Enjoy a stunning display with bright, vivid colors anywhere with the TCL 20 SE smartphone. A 6.82-inch V-notch screen, powered by NXVISION, showcases your media at its best. With a 90% screen-to-body ratio and a 20.5:9 aspect ratio for optimal viewing in a slim form, the expansive screen provides the maximum amount of display for streaming. 48 MP AI Quad-Camera: Effortlessly capture high-definition images with a 48 MP AI rear camera. ",
     images: [
-      "https://res.cloudinary.com/silviajcn/image/upload/v1642289949/Productos%20Amazonas/tdsfoquh4fht9tbm2ql4.jpg",
-      "https://res.cloudinary.com/silviajcn/image/upload/v1642289956/Productos%20Amazonas/nq1gduvp2ogydocixvw7.jpg",
-      "https://res.cloudinary.com/silviajcn/image/upload/v1642289965/Productos%20Amazonas/lttd8x2tfwnpsqrzw5kg.jpg",
+      "https://images.fravega.com/f1000/da3a9a399484bc0f337d16e89044eee7.jpg",
+      "https://bairesit.com.ar/Image/0/750_750-T671E1-FALCAR11-7.jpg",
+      "https://www.radioshackla.com/media/catalog/product/4/5/459680300014_1.jpg?optimize=medium&bg-color=255,255,255&fit=bounds&height=700&width=700&canvas=700:700",
     ],
     banner:
       "https://res.cloudinary.com/silviajcn/image/upload/v1642289973/Productos%20Amazonas/yjnsf4fn948jpb4q8fxh.jpg",
@@ -196,9 +196,9 @@ export const products = [
     description:
       "Play, stream, and enjoy your favorite shows, work on your game, and keep your playlist explosive with the long-lasting battery of the Galaxy A52 5G. When you need a power boost, super-fast charging will get you back up in no time. Dual-SIM and Nano-SIM (4FF) compatible. Work fast, play hard: get into the flow and stay there with the Galaxy A52 5G. With a fast and reliable processor plus 5G connectivity in your pocket, you set your own limits—or none at all.",
     images: [
-      "https://res.cloudinary.com/silviajcn/image/upload/v1642289373/Productos%20Amazonas/fgcsxgeafvyi4roiflcd.jpg",
-      "https://res.cloudinary.com/silviajcn/image/upload/v1642289386/Productos%20Amazonas/wbn3brpd3pkafjc3i0be.jpg",
-      "https://res.cloudinary.com/silviajcn/image/upload/v1642289396/Productos%20Amazonas/ugxocajisya1ri8penkc.jpg",
+      "https://images.samsung.com/is/image/samsung/assets/za/smartphones/galaxy-a-series/A52_5G_mo1.jpg?imbypass=true",
+      "https://fdn.gsmarena.com/imgroot/news/21/07/samsung-galaxy-a52-5g-ifr/-1200w5/gsmarena_001.jpg",
+      "https://i.ebayimg.com/images/g/JBgAAOSwuFVggsoA/s-l1600.jpg",
     ],
     banner:
       "https://res.cloudinary.com/silviajcn/image/upload/v1642289411/Productos%20Amazonas/vjvpjb1pcmkyt0cib4zy.jpg",
@@ -645,9 +645,9 @@ export const products = [
     description:
       "Unlocked for the freedom to choose your carrier, the Moto G Power (2021) is compatible with AT&T, Sprint, T-Mobile, and Verizon networks. SIM card not included; customers may need to contact Sprint for activation on their network or provide their SIM through Verizon Wireless to use the device on that network. The box includes the Moto G Power (2021), a 10W fast charger, a USB cable, guides, and a SIM tool. With a 5000 mAh battery, enjoy up to three days of use without needing to recharge. The 48 MP triple camera system lets you capture stunning photos in various lighting conditions, with beautifully blurred portraits and incredibly detailed close-ups. The 6.6-inch Max Vision HD display offers immersive viewing for games, movies, and video calls. Equipped with the Qualcomm Snapdragon 662 2020 processor, the Moto G Power (2021) delivers smooth and responsive performance, enhancing the experience compared to its predecessor. Its water-repellent design protects the phone from accidental spills and splashes.",
     images: [
-      "https://res.cloudinary.com/silviajcn/image/upload/v1642289661/Productos%20Amazonas/rrczjh6hs7pfr8xvfnjg.jpg",
-      "https://res.cloudinary.com/silviajcn/image/upload/v1642289669/Productos%20Amazonas/qonglh5w0ynbxwifdam4.jpg",
-      "https://res.cloudinary.com/silviajcn/image/upload/v1642289675/Productos%20Amazonas/zvpqbikamvosycsoorll.jpg",
+      "https://i5.walmartimages.com/seo/Motorola-Moto-G-Power-2021-32GB-Flash-Gray-Unlocked_5463f168-ad90-4e34-8c52-559cc9d7a6ee.cfbe3a29e4f494ec6e1c9087fcd4763a.png",
+      "https://i5.walmartimages.com/seo/Motorola-Moto-G-Power-2021-64GB-Flash-Gray-Unlocked_cac53b70-a61e-4fa8-a30a-d284944c186f.9058f1ca36b357b99b0b7c6d85529503.png",
+      "https://motorolacafr.vtexassets.com/arquivos/ids/155540/moto-g-power-ecom-card-pdp-render-1-ikfq57bt.png?v=637457094600030000",
     ],
     banner:
       "https://res.cloudinary.com/silviajcn/image/upload/v1642289683/Productos%20Amazonas/jusouwpdu5eusrw7uzok.jpg",
@@ -684,9 +684,9 @@ export const products = [
     description:
       "Cell phone with 20GB capacity and high-resolution camera. This phone is unlocked and compatible with any GSM and CDMA network operator (e.g., AT&T, T-Mobile, Sprint, Verizon, US Cellular, Cricket, Metro, Tracfone, Mint Mobile, etc.). Battery health has been checked and it is guaranteed to come with a battery that exceeds 90% of its original capacity. Includes a new generic charging cable with MFi certification (Made for iPhone) and a new generic wall plug with UL certification for enhanced performance and safety. Also includes a SIM tray ejector tool, but does not come with headphones or SIM card. It has been inspected and is guaranteed to have minimal cosmetic damage that is not noticeable when holding the device at arm's length. It has passed a full diagnostic test, ensuring it functions like new and that any personal information from the previous user has been removed.",
     images: [
-      "https://res.cloudinary.com/silviajcn/image/upload/v1642786067/Productos%20Amazonas/wyaquvurg9t1zxkjzkse.jpg",
-      "https://res.cloudinary.com/silviajcn/image/upload/v1642786075/Productos%20Amazonas/zaaj2eng7dycgaoqqpcc.jpg",
-      "https://res.cloudinary.com/silviajcn/image/upload/v1642786082/Productos%20Amazonas/gitqxcjjsmwuoptnfohl.jpg",
+      "https://m.media-amazon.com/images/I/8152d1UkEPL._AC_UF1000,1000_QL80_.jpg",
+      "https://m.media-amazon.com/images/I/714tpmYbbqL._AC_SL1500_.jpg",
+      "https://images-cdn.ubuy.co.in/6595874cb2ee0166770c9bea-samsung-galaxy-a50-128gb-4gb-ram-6-4.jpg",
     ],
     banner:
       "https://res.cloudinary.com/silviajcn/image/upload/v1642786092/Productos%20Amazonas/suxnthxyquc4at04m1jq.png",

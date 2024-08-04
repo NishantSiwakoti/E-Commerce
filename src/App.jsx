@@ -4,7 +4,6 @@ import Allroutes from "./Routes/Allroutes";
 function App() {
   return (
     <>
-      <Header />
       <Allroutes />
     </>
   );
