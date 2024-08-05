@@ -15,8 +15,12 @@ const Header = () => {
     if (searchQuery.trim()) {
       navigate(`/search?q=${searchQuery}`);
       setSearchQuery("");
-      setShowSearchInput(false); // Hide the search input after submission
+      setShowSearchInput(false);
     }
+  };
+
+  const handleCartClick = () => {
+    navigate("/mycart");
   };
 
   return (
@@ -47,17 +51,19 @@ const Header = () => {
             </button>
           </div>
           <div className="hidden lg:flex items-center space-x-2">
-            <FaUser className="text-white-500 text-2xl" />
-            <span className="text-white-600">Login</span>
+            <FaUser className="text-[#005f61] text-2xl" />
+            <span className="text-[#005f61]">Login</span>
           </div>
           <div className="relative flex items-center space-x-2">
-            <FaShoppingCart className="text-[#005f61] text-2xl relative">
-              {cartCount > 0 && (
-                <span className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 bg-white-500 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
-                  {cartCount}
-                </span>
-              )}
-            </FaShoppingCart>
+            <button onClick={handleCartClick}>
+              <FaShoppingCart className="text-[#005f61] text-2xl relative">
+                {cartCount > 0 && (
+                  <span className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 bg-white-500 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
+                    {cartCount}
+                  </span>
+                )}
+              </FaShoppingCart>
+            </button>
           </div>
           <div className="lg:hidden text-2xl mt-1 md:mt-0">
             <button onClick={() => setMenuOpen(!menuOpen)}>

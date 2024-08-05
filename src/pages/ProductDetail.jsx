@@ -1,25 +1,34 @@
-import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useParams, Link } from "react-router-dom";
 import { products } from "../assets/Products";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import ProductCard from "../components/ProductCard";
+import { useCart } from "../context/CartContext";
 
 const ProductDetail = () => {
   const { id } = useParams();
   const product = products.find((prod) => prod.id === id);
+  const { addToCart, cartItems } = useCart();
+  const [isAddedToCart, setIsAddedToCart] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [id]);
 
+  useEffect(() => {
+    if (cartItems.some((item) => item.id === id)) {
+      setIsAddedToCart(true);
+    }
+  }, [cartItems, id]);
+
   if (!product) {
     return <div className="container mx-auto px-4 py-8">Product not found</div>;
   }
 
-  const similarProducts = products.filter(
-    (prod) => prod.category === product.category && prod.id !== product.id
-  );
+  const handleAddToCart = () => {
+    addToCart(product);
+    setIsAddedToCart(true);
+  };
 
   return (
     <section className="bg-gray-100 py-8">
@@ -31,6 +40,7 @@ const ProductDetail = () => {
               infiniteLoop
               useKeyboardArrows
               autoPlay
+              interval={2000}
             >
               {product.images.map((image, index) => (
                 <div key={index}>
@@ -48,15 +58,15 @@ const ProductDetail = () => {
               {product.title}
             </h1>
             <p className="text-gray-700 text-md md:text-lg mb-4 description-clamp">
-              {product.description}
+              {product.description.split(". ").slice(0, 2).join(". ")}.
             </p>
             <div className="flex items-center mb-4">
               <span className="text-2xl font-semibold text-gray-900 mr-2">
                 Rs.{product.price}
               </span>
-              {product.cutprice && (
-                <span className="text-lg line-through text-gray-500">
-                  Rs.{product.cutprice}
+              {product.cutPrice && (
+                <span className="text-lg line-through font-medium text-gray-500 ml-2 relative">
+                  Rs.{product.cutPrice}
                 </span>
               )}
             </div>
@@ -87,38 +97,28 @@ const ProductDetail = () => {
                   : "Out of stock"}
               </span>
             </div>
-            <button className="bg-orange-400 hover:bg-orange-500 text-white text-lg font-semibold py-2 px-4 rounded transition duration-300">
-              Buy Now
-            </button>
-          </div>
-        </div>
-
-        {/* Similar Products Section */}
-        {similarProducts.length > 0 && (
-          <div className="mt-12">
-            <h2 className="text-xl md:text-3xl font-bold text-gray-800 mb-6">
-              Similar Products
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {similarProducts.map((prod) => (
-                <div className="p-4 bg-white rounded-lg shadow-md">
-                  <ProductCard
-                    key={prod.id}
-                    id={prod.id}
-                    title={prod.title}
-                    image={prod.images[0]}
-                    category={prod.category}
-                    price={prod.price}
-                    cutPrice={prod.cutprice}
-                    description={prod.description}
-                    rating={prod.rate}
-                    brand={prod.brand}
-                  />
-                </div>
-              ))}
+            <div className="flex space-x-4">
+              <button className="bg-orange-400 rounded-xl hover:bg-orange-500 text-white text-lg font-semibold py-2 px-4 transition duration-300">
+                Buy Now
+              </button>
+              {isAddedToCart ? (
+                <Link
+                  to="/mycart"
+                  className="bg-blue-500 rounded-xl hover:bg-blue-600 text-white text-lg font-semibold py-2 px-4 transition duration-300"
+                >
+                  Go to Cart
+                </Link>
+              ) : (
+                <button
+                  className="bg-green-500 rounded-xl hover:bg-green-600 text-white text-lg font-semibold py-2 px-4 transition duration-300"
+                  onClick={handleAddToCart}
+                >
+                  Add to Cart
+                </button>
+              )}
             </div>
           </div>
-        )}
+        </div>
       </div>
     </section>
   );

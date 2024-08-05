@@ -5,7 +5,8 @@ import TopDeals from "../pages/TopDeals";
 import ForYouPage from "../pages/ForYouPage";
 import ProductDetail from "../pages/ProductDetail";
 import SearchPage from "../pages/SearchPage";
-import Header from "../components/Header"; // Adjust the path as necessary
+import Header from "../components/Header";
+import MyCartPage from "../pages/MyCartPage";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="foryou" element={<ForYouPage />} />
         <Route path="/product/:id" element={<ProductDetail />} />
         <Route path="/search" element={<SearchPage />} />
+        <Route path="/mycart" element={<MyCartPage />} />
       </Routes>
     </Router>
   );

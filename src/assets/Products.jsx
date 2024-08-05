@@ -1011,7 +1011,7 @@ export const products = [
     id: "aaz865kjcar",
     title: "MCHOSE Soporte para laptop",
     price: 30,
-    cutprice: 100,
+    cutPrice: 100,
 
     category: "Accessories",
     description:
@@ -1031,7 +1031,7 @@ export const products = [
     id: "aaq11907gbfc",
     title: "Dell Inspiron 16",
     price: 700,
-    cutprice: 100,
+    cutPrice: 100,
 
     category: "Laptops",
     description:

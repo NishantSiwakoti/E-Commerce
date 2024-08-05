@@ -1,19 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ProductCard from "../components/ProductCard";
 import { products } from "../assets/Products";
 import { NavLink } from "react-router-dom";
-
-// Import images at the top
 import img1 from "../assets/1.png";
 import img2 from "../assets/2.png";
 import img3 from "../assets/3.png";
 
+import catImg1 from "../assets/beauty.png";
+import catImg2 from "../assets/electronics.png";
+import catImg3 from "../assets/fashion.png";
+import catImg4 from "../assets/fur.png";
+import catImg5 from "../assets/sports.png";
+import catImg6 from "../assets/toys.png";
+import catImg7 from "../assets/travel.png";
+import catImg8 from "../assets/phones.png";
+
 const HeroSection = () => {
+  const [cartItems, setCartItems] = useState([]);
+
+  const handleAddToCart = (product) => {
+    setCartItems((prevItems) => [...prevItems, product]);
+  };
+
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
@@ -53,27 +66,19 @@ const HeroSection = () => {
   };
 
   const categories = [
-    "Electronics",
-    "Fashion",
-    "Sports",
-    "Toys",
-    "Mobiles",
-    "Travel",
-    "Furniture",
-    "Beauty",
-    "Appliances",
+    { name: "Electronics", image: catImg2 },
+    { name: "Fashion", image: catImg3 },
+    { name: "Sports", image: catImg5 },
+    { name: "Toys", image: catImg6 },
+    { name: "Mobiles", image: catImg8 },
+    { name: "Travel", image: catImg7 },
+    { name: "Furniture", image: catImg4 },
+    { name: "Beauty", image: catImg1 },
   ];
 
   const images = [img1, img2, img3];
 
   const topDeals = products.filter((product) => product.cutPrice);
-
-  const getRandomProducts = (arr, count) => {
-    const shuffled = arr.sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, count);
-  };
-
-  const randomProducts = getRandomProducts(products, 10);
 
   return (
     <section className="bg-gray-100 overflow-x-hidden">
@@ -81,15 +86,19 @@ const HeroSection = () => {
         {/* Category Bar */}
         <div className="mb-4 m-3 overflow-x-auto md:justify-center bg-white whitespace-nowrap py-8 rounded-md flex">
           {categories.map((category, index) => (
-            <span
+            <div
               key={index}
-              className="inline-block min-w-[120px] mx-2 px-4 py-2 bg-orange-400 text-white rounded-lg hover:bg-orange-500 cursor-pointer transition duration-300"
+              className="min-w-[120px] mx-2 px-4 py-2 bg-orange-400 text-white rounded-lg hover:bg-orange-500 cursor-pointer transition duration-300 flex flex-col items-center"
             >
-              {category}
-            </span>
+              <img
+                src={category.image}
+                alt={category.name}
+                className="w-12 h-12 mb-2"
+              />
+              <span>{category.name}</span>
+            </div>
           ))}
         </div>
-
         {/* Hero Carousel */}
         <div className="carousel mx-auto w-full px-2 mb-8">
           <Slider {...settings}>
@@ -107,7 +116,6 @@ const HeroSection = () => {
             ))}
           </Slider>
         </div>
-
         {/* Top Deals Section */}
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-2xl font-bold m-5 lg:ml-16">Top Deals</h2>
@@ -117,31 +125,29 @@ const HeroSection = () => {
             </button>
           </NavLink>
         </div>
-
         {/* Top Deals Carousel */}
         <div className="top-deals-carousel mx-auto w-full px-2 mb-8">
           <Slider {...productCarouselSettings}>
             {topDeals.map((product) => (
-              <NavLink key={product.id} to={`/product/${product.id}`}>
-                <div className="p-4 bg-white rounded-lg shadow-md m-2">
-                  <ProductCard
-                    key={product.id}
-                    id={product.id}
-                    title={product.title}
-                    image={product.images[0]}
-                    category={product.category}
-                    price={product.price}
-                    cutPrice={product.cutPrice}
-                    description={product.description}
-                    rating={product.rate}
-                    brand={product.brand}
-                  />
-                </div>
-              </NavLink>
+              <div
+                key={product.id}
+                className="p-4 bg-white rounded-lg shadow-md m-2"
+              >
+                <ProductCard
+                  id={product.id}
+                  title={product.title}
+                  image={product.images[0]}
+                  category={product.category}
+                  price={product.price}
+                  cutPrice={product.cutPrice}
+                  description={product.description}
+                  rating={product.rate}
+                  brand={product.brand}
+                />
+              </div>
             ))}
           </Slider>
         </div>
-
         {/* For You Section */}
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-2xl font-bold m-5 lg:ml-16">For You</h2>
@@ -151,13 +157,11 @@ const HeroSection = () => {
             </button>
           </NavLink>
         </div>
-
         {/* For You Grid */}
         <div className="for-you-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 mx-auto w-full px-2 mb-8">
-          {randomProducts.map((product) => (
-            <div className="p-4 bg-white rounded-lg shadow-md">
+          {products.map((product) => (
+            <div className="p-4 bg-white rounded-lg shadow-md" key={product.id}>
               <ProductCard
-                key={product.id}
                 id={product.id}
                 title={product.title}
                 image={product.images[0]}
@@ -168,6 +172,12 @@ const HeroSection = () => {
                 rating={product.rate}
                 brand={product.brand}
               />
+              <button
+                onClick={() => handleAddToCart(product)}
+                className="mt-4 w-full bg-orange-400 text-white py-2 rounded-lg hover:bg-orange-500 transition duration-300"
+              >
+                {cartItems.includes(product) ? "Go to Cart" : "Add to Cart"}
+              </button>
             </div>
           ))}
         </div>
