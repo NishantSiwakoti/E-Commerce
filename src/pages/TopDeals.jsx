@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ProductCard from "../components/ProductCard";
 import { products } from "../assets/Products";
+import { useEffect } from "react";
 
 const TopDeals = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -10,6 +11,10 @@ const TopDeals = () => {
   };
 
   const topDeals = products.filter((product) => product.cutPrice);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <section className="bg-gray-100 min-h-screen py-8">

@@ -18,7 +18,17 @@ const ProductCard = ({
   const [isAddedToCart, setIsAddedToCart] = useState(false);
 
   const handleAddToCart = () => {
-    addToCart({ id, title, image, price });
+    addToCart({
+      id,
+      title,
+      image,
+      category,
+      price,
+      cutPrice,
+      description,
+      rating,
+      brand,
+    });
     setIsAddedToCart(true);
   };
 
@@ -95,23 +105,15 @@ const ProductCard = ({
 };
 
 ProductCard.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
-  category: PropTypes.string,
+  category: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   cutPrice: PropTypes.number,
-  description: PropTypes.string,
-  rating: PropTypes.number,
-  brand: PropTypes.string,
-};
-
-ProductCard.defaultProps = {
-  category: "",
-  cutPrice: null,
-  description: "",
-  rating: 0,
-  brand: "",
+  description: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired,
+  brand: PropTypes.string.isRequired,
 };
 
 export default ProductCard;

@@ -40,7 +40,7 @@ const MyCartPage = () => {
               <img
                 src={item.image}
                 alt={item.title}
-                className="w-52 h-w-52 rounded-lg object-contain md:w-56 md:h-w-56"
+                className="w-32 h-w-32 rounded-lg object-contain md:w-40 md:h-w-40"
               />
               <div className="flex-1 ml-4 mt-4 md:mt-0">
                 <Link to={`/product/${item.id}`}>
@@ -50,9 +50,11 @@ const MyCartPage = () => {
                 </Link>
                 <div className="flex flex-col md:flex-row">
                   <p className="text-white text-xl">Rs.{item.price}</p>
-                  <p className="text-white text-lg md:ml-4 line-through">
-                    Rs.{item.cutPrice}
-                  </p>
+                  {item.cutPrice && (
+                    <p className="text-white text-lg md:ml-4 line-through">
+                      Rs.{item.cutPrice}
+                    </p>
+                  )}
                 </div>
 
                 <div className="flex mt-4">

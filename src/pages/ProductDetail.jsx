@@ -26,7 +26,7 @@ const ProductDetail = () => {
   }
 
   const handleAddToCart = () => {
-    addToCart(product);
+    addToCart({ ...product, image: product.images[0] });
     setIsAddedToCart(true);
   };
 
