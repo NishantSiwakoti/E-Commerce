@@ -7,6 +7,8 @@ import ProductDetail from "../pages/ProductDetail";
 import SearchPage from "../pages/SearchPage";
 import Header from "../components/Header";
 import MyCartPage from "../pages/MyCartPage";
+import Footer from "../components/Footer";
+import AboutUs from "../pages/About";
 
 const App = () => {
   return (
@@ -19,7 +21,9 @@ const App = () => {
         <Route path="/product/:id" element={<ProductDetail />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/mycart" element={<MyCartPage />} />
+        <Route path="/about" element={<AboutUs />} />
       </Routes>
+      <Footer />
     </Router>
   );
 };

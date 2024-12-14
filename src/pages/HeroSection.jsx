@@ -26,41 +26,36 @@ const HeroSection = () => {
   };
 
   const settings = {
-    dots: false,
+    dots: true,
     infinite: true,
-    speed: 500,
+    speed: 600,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 3000,
+    arrows: false,
   };
 
   const productCarouselSettings = {
     dots: false,
     infinite: true,
-    speed: 500,
+    speed: 600,
     slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 2500,
     responsive: [
       {
         breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-        },
+        settings: { slidesToShow: 3 },
       },
       {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 1,
-        },
+        breakpoint: 768,
+        settings: { slidesToShow: 2 },
       },
       {
         breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-        },
+        settings: { slidesToShow: 1 },
       },
     ],
   };
@@ -77,60 +72,70 @@ const HeroSection = () => {
   ];
 
   const images = [img1, img2, img3];
-
   const topDeals = products.filter((product) => product.cutPrice);
   const forYouProducts = products.slice(0, 10);
 
   return (
-    <section className="bg-gray-100 overflow-x-hidden">
-      <div className="container mx-auto px-4 text-center">
+    <section className="bg-gradient-to-b from-gray-100 via-white to-gray-200 overflow-x-hidden">
+      <div className="container mx-auto px-4">
         {/* Category Bar */}
-        <div className="mb-4 m-3 overflow-x-auto bg-white whitespace-nowrap py-8 rounded-md flex ">
+        <div className="category-bar mb-8 py-6 mt-2 bg-white shadow-lg rounded-xl flex justify-around flex-wrap">
           {categories.map((category, index) => (
             <div
               key={index}
-              className="min-w-[120px] mx-2 px-4 py-2 bg-orange-400 text-white rounded-lg hover:bg-orange-500 cursor-pointer transition duration-300 flex flex-col items-center"
+              className="category-card flex flex-col items-center cursor-pointer group"
+              aria-label={category.name}
             >
-              <img
-                src={category.image}
-                alt={category.name}
-                className="w-12 h-12 mb-2"
-              />
-              <span>{category.name}</span>
+              <div className="w-16 h-16 bg-gradient-to-r from-orange-400 to-orange-500 rounded-full flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300">
+                <img
+                  src={category.image}
+                  alt={category.name}
+                  className="w-10 h-10"
+                />
+              </div>
+              <span className="mt-3 text-gray-700 group-hover:text-orange-500 text-sm font-semibold transition-colors">
+                {category.name}
+              </span>
             </div>
           ))}
         </div>
+
         {/* Hero Carousel */}
-        <div className="carousel mx-auto w-full px-2 mb-8">
+        <div className="carousel w-full mb-12">
           <Slider {...settings}>
             {images.map((img, index) => (
               <div
                 key={index}
-                className="flex justify-center items-center h-full"
+                className="relative w-full overflow-hidden rounded-lg shadow-lg"
               >
                 <img
-                  className="rounded-lg w-full h-[150px] md:h-[400px] object-cover"
                   src={img}
                   alt={`Slide ${index + 1}`}
+                  className="w-full h-[300px] md:h-[500px] object-cover"
                 />
+                {/* <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center text-white text-xl md:text-3xl font-bold">
+                  Discover Amazing Deals!
+                </div> */}
               </div>
             ))}
           </Slider>
         </div>
+
         {/* Top Deals Section */}
-        <div className="flex justify-between items-center mb-4">
-          <h2 className="text-2xl font-bold m-5 lg:ml-16">Top Deals</h2>
+        <div className="section-header flex justify-between items-center mb-6">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-gray-800">
+            Top Deals
+          </h2>
           <NavLink to="/topdeals">
-            <button className="border-2 bg-white text-orange-400 border-orange-400 px-4 py-2 rounded-lg hover:bg-orange-600 hover:text-white transition duration-300">
+            <button className="px-5 py-2 bg-orange-500 text-white font-semibold rounded-lg shadow-lg hover:bg-orange-600 transition-all">
               See More
             </button>
           </NavLink>
         </div>
-        {/* Top Deals Carousel */}
-        <div className="top-deals-carousel mx-auto w-full px-2 mb-8">
-          <Slider {...productCarouselSettings}>
+        <div className="top-deals-carousel mb-12">
+          <Slider {...productCarouselSettings} className="gap-x-4">
             {topDeals.map((product) => (
-              <div key={product.id} className="">
+              <div key={product.id} className="px-2">
                 <ProductCard
                   id={product.id}
                   title={product.title}
@@ -141,24 +146,27 @@ const HeroSection = () => {
                   description={product.description}
                   rating={product.rate}
                   brand={product.brand}
-                  className="mx-4 my-4"
                 />
               </div>
             ))}
           </Slider>
         </div>
-        <div className="flex justify-between items-center mb-4">
-          <h2 className="text-2xl font-bold m-5 lg:ml-16">For You</h2>
+
+        {/* For You Section */}
+        <div className="section-header flex justify-between items-center mb-6">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-gray-800">
+            For You
+          </h2>
           <NavLink to="/foryou">
-            <button className="border-2 bg-white text-orange-400 border-orange-400 px-4 py-2 rounded-lg hover:bg-orange-600 hover:text-white transition duration-300">
+            <button className="px-5 py-2 bg-orange-500 text-white font-semibold rounded-lg shadow-lg hover:bg-orange-600 transition-all">
               See More
             </button>
           </NavLink>
         </div>
-        <div className="for-you-carousel mx-auto w-full px-2 mb-8">
-          <Slider {...productCarouselSettings}>
+        <div className="for-you-carousel mb-12">
+          <Slider {...productCarouselSettings} className="gap-x-4">
             {forYouProducts.map((product) => (
-              <div key={product.id} className="m-2">
+              <div key={product.id} className="px-2">
                 <ProductCard
                   id={product.id}
                   title={product.title}
@@ -169,7 +177,6 @@ const HeroSection = () => {
                   description={product.description}
                   rating={product.rate}
                   brand={product.brand}
-                  className="mx-4 my-4"
                 />
               </div>
             ))}
