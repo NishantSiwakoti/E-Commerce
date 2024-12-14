@@ -11,6 +11,7 @@ const ProductDetail = () => {
   const product = products.find((prod) => prod.id === id);
   const { addToCart, cartItems } = useCart();
   const [isAddedToCart, setIsAddedToCart] = useState(false);
+  const [showFullDescription, setShowFullDescription] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -69,9 +70,30 @@ const ProductDetail = () => {
             <h1 className="text-3xl md:text-5xl font-extrabold text-orange-500 mb-4">
               {product.title}
             </h1>
+
+            {/* Product Description with "See More" */}
             <p className="text-gray-700 text-md md:text-lg mb-4 leading-relaxed">
-              {product.description}
+              {showFullDescription
+                ? product.description
+                : `${product.description.split(" ").slice(0, 30).join(" ")}...`}
+              {!showFullDescription && (
+                <button
+                  className="text-orange-500 underline ml-2"
+                  onClick={() => setShowFullDescription(true)}
+                >
+                  See More
+                </button>
+              )}
+              {showFullDescription && (
+                <button
+                  className="text-orange-500 underline ml-2"
+                  onClick={() => setShowFullDescription(false)}
+                >
+                  See Less
+                </button>
+              )}
             </p>
+
             <div className="flex items-center mb-4">
               <span className="text-3xl font-bold text-gray-900 mr-2">
                 Rs. {product.price}
