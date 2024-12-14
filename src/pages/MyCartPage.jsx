@@ -28,12 +28,12 @@ const MyCartPage = () => {
       fu: "http://hamromart.vercel.app/failed",
     };
 
-    // Redirect to eSewa
+    // Redirect to eSewa in a new tab
     const queryString = Object.keys(params)
       .map((key) => `${key}=${encodeURIComponent(params[key])}`)
       .join("&");
 
-    window.location.href = `${esewaUrl}?${queryString}`;
+    window.open(`${esewaUrl}?${queryString}`, "_blank");
   };
 
   return (
